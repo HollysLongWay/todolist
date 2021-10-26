@@ -25,7 +25,6 @@ function toggleTodo(id) {
   };
 }
 
-// getState를 쓰지 않는다면 굳이 파라미터로 받아올 필요 없습니다.
 export const handleAddTodo = (todo) => (dispatch) => {
   dispatch(addTodo(todo));
 };
