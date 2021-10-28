@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TodoItem from './TodoItem';
 
 export default function TodoList() {
   const todos = [];
+
+  useEffect(() => {}, []);
 
   return (
     <ul>
