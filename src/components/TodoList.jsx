@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TodoItem from './TodoItem';
 
 export default function TodoList() {
-  const todos = [];
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
 
   useEffect(() => {}, []);
 
