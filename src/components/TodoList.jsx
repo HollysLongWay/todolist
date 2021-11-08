@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getTodo } from '../modules/reducer';
 import TodoItem from './TodoItem';
 
 export default function TodoList() {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getTodo());
+  }, [dispatch]);
 
-  return (
-    <ul>
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} id={todo.id} value={todo.value} complete={todo.complete} />
-      ))}
-    </ul>
-  );
+  const todos = useSelector((store) => store.todos);
+
+  return <ul>{todos && todos.map((todo) => <TodoItem key={todo.id} id={todo.id} value={todo.value} complete={todo.complete} />)}</ul>;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { handleAddTodo } from './../modules/reducer';
+import { addTodo } from './../modules/reducer';
 
 export default function TodoInput() {
   const [value, setValue] = useState('');
@@ -9,7 +9,7 @@ export default function TodoInput() {
   const onSubmit = (e) => {
     e.preventDefault();
     setValue('');
-    handleAddTodo(e.value);
+    addTodo(e.value);
   };
 
   return (
