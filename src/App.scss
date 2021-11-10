@@ -16,7 +16,7 @@
 .todos {
   form input {
     width: 400px;
-    padding: 16px 16px 16px 40px;
+    padding: 16px 26px 16px 40px;
     border: none;
     font-size: 20px;
     background: #fff;
@@ -36,6 +36,9 @@
       height: 30px;
       margin-right: 20px;
       padding: 5px;
+    }
+    button {
+      margin-left: auto;
     }
   }
 }

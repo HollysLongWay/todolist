@@ -9,10 +9,14 @@ export function getTodo() {
   return { type: GET_TODO };
 }
 
-export function addTodo(todo) {
+export function addTodo(text) {
   return {
     type: ADD_TODO,
-    todo,
+    todo: {
+      id: Date.now(),
+      value: text,
+      complete: false,
+    },
   };
 }
 
@@ -42,7 +46,7 @@ export function toggleTodo(id) {
 //   dispatch(toggleTodo(id));
 // };
 
-const initial = [{ id: 1, value: '리스트 추가하기', complete: false }];
+const initial = [{ id: Date.now(), value: '리스트 추가하기', complete: false }];
 
 export function todos(state = initial, action) {
   switch (action.type) {
