@@ -6,9 +6,11 @@ import TodoItem from './TodoItem';
 export default function TodoList() {
   const dispatch = useDispatch();
   const todos = useSelector((store) => store.todos);
+
   const onChange = (id) => {
     dispatch(toggleTodo(id));
   };
+
   const onClick = (id) => {
     dispatch(removeTodo(id));
   };

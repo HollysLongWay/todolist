@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux';
 
 export default function TodoInput() {
   const [value, setValue] = useState('');
-  const dispatch = useDispatch();
   const onChange = (e) => setValue(e.target.value);
+
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();

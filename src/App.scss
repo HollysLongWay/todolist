@@ -1,19 +1,27 @@
+@use './nomalize.scss';
+
 .todos {
-  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: 100px;
+  height: 100vh;
   display: flex;
   padding-top: 100px;
   flex-direction: column;
   align-items: center;
   background-color: #282c34;
   text-align: center;
-}
 
-.todos-header {
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  &-header {
+    font-size: calc(10px + 2vmin);
+    color: white;
 
-.todos {
+    h1 {
+      font-weight: 700;
+      font-size: 70px;
+      padding-bottom: 50px;
+    }
+  }
+
   form input {
     width: 400px;
     padding: 16px 26px 16px 40px;
@@ -23,22 +31,36 @@
     border-radius: 10px;
   }
 
-  ul li {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px;
-    input {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      margin-right: 20px;
-      padding: 5px;
-    }
-    button {
-      margin-left: auto;
+  ul {
+    padding: 30px 0;
+    max-height: 500px;
+
+    li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-weight: 600;
+      font-size: 20px;
+
+      input {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        padding: 5px;
+      }
+
+      label {
+        flex-grow: 1;
+        padding-left: 20px;
+        text-align: left;
+      }
+
+      button {
+        margin-left: auto;
+        padding: 4px;
+      }
     }
   }
 }
