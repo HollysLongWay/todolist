@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 export default function TodoItem({ id, value, complete, onChange, onClick }) {
+  const todoRef = useRef();
+
   return (
-    <li>
-      <input type="checkbox" id={id} checked={complete} onChange={() => onChange(id)} />
-      <label for={id}>{value}</label>
-      <button onClick={() => onClick(id)}>삭제</button>
+    <li ref={todoRef}>
+      <input
+        type="checkbox"
+        id={id}
+        checked={complete}
+        onChange={() => {
+          onChange(id);
+          console.log(todoRef.current);
+          todoRef.current.classList.toggle('checked');
+        }}
+      />
+      <label htmlFor={id}>{value}</label>
+      <button onClick={() => onClick(id)} aria-label="완료된 할 일 목록 삭제">
+        삭제
+      </button>
     </li>
   );
 }
