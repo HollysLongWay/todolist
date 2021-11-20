@@ -1,0 +1,27 @@
+.toggle-all {
+  position: absolute;
+  top: 0;
+  label {
+    position: absolute;
+    left: 0;
+    height: 60px;
+    width: 45px;
+    padding: 27px 10px;
+    &::before {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 18px;
+      content: 'V';
+      font-weight: 700;
+      display: block;
+      color: #e6e6e6;
+    }
+  }
+  .toggle-all-input {
+    appearance: none;
+    &:checked ~ label::before {
+      color: #444444;
+    }
+  }
+}

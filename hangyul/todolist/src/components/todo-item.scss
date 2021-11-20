@@ -1,0 +1,44 @@
+.todo-item {
+  padding: 10px 0;
+  box-shadow: 0 0 1px 0 rgba(100, 100, 100, 0.4);
+  .view {
+    position: relative;
+    .toggle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      height: 40px;
+      margin: auto 0;
+      background-image: url(../images/unchecked.svg);
+      background-repeat: no-repeat;
+      appearance: none;
+    }
+    .toggle:checked {
+      background-image: url(../images/checked.svg);
+    }
+    label {
+      height: 40px;
+      padding: 10px 48px;
+      display: block;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .delete {
+      display: none;
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      cursor: pointer;
+      font-size: 20px;
+      color: gray;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      right: 10px;
+    }
+    &:hover .delete {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.footer {
+  color:rgba(0, 0, 0, 0.5);
+  position: relative;
+  text-align: center;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  .todo-count {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    margin: 10px;
+    padding: 5px 0;
+  }
+  .filters {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 10px;
+    list-style-type: none;
+    li {
+      display: inline;
+      button.filter {
+        color: inherit;
+        margin: 0 10px;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: transparent;
+        &.selected {
+          border: 1px solid rgba(200, 20, 20, 0.2);
+        }
+      }
+    }
+  }
+}
