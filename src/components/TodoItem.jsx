@@ -11,7 +11,6 @@ export default function TodoItem({ id, value, complete, onChange, onClick }) {
         checked={complete}
         onChange={() => {
           onChange(id);
-          console.log(todoRef.current);
           todoRef.current.classList.toggle('checked');
         }}
       />
