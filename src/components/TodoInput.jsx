@@ -16,7 +16,7 @@ export default function TodoInput() {
 
   return (
     <form onSubmit={onSubmit}>
-      <input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={onChange} value={value} />
+      <input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={onChange} value={value} aria-label="할 일 추가하기" />
     </form>
   );
 }

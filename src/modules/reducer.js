@@ -1,64 +1,27 @@
-// action type
-const GET_TODO = 'GET_TODO';
-const ADD_TODO = 'ADD_TODO';
-const REMOVE_TODO = 'REMOVE_TODO';
-const TOGGLE_TODO = 'TOGGLE_TODO';
+import { createAction, createReducer } from '@reduxjs/toolkit';
 
-// action creator
-export function getTodo() {
-  return { type: GET_TODO };
-}
-
-export function addTodo(text) {
-  return {
-    type: ADD_TODO,
-    todo: {
-      id: Date.now(),
-      value: text,
-      complete: false,
-    },
-  };
-}
-
-export function removeTodo(id) {
-  return {
-    type: REMOVE_TODO,
-    id,
-  };
-}
-
-export function toggleTodo(id) {
-  return {
-    type: TOGGLE_TODO,
-    id,
-  };
-}
-
-// export const handleAddTodo = (todo) => (dispatch) => {
-//   dispatch(addTodo(todo));
-// };
-
-// export const handleRemoveTodo = (id) => (dispatch) => {
-//   dispatch(removeTodo(id));
-// };
-
-// export const handleToggleTodo = (id) => (dispatch) => {
-//   dispatch(toggleTodo(id));
-// };
+// action type + creator
+export const getTodo = createAction('GET_TODO');
+export const addTodo = createAction('ADD_TODO');
+export const removeTodo = createAction('REMOVE_TODO');
+export const toggleTodo = createAction('TOGGLE_TODO');
 
 const initial = [{ id: Date.now(), value: '리스트 추가하기', complete: false }];
 
-export function todos(state = initial, action) {
-  switch (action.type) {
-    case GET_TODO:
-      return state;
-    case ADD_TODO:
-      return [...state, action.todo];
-    case REMOVE_TODO:
-      return state.filter((todo) => todo.id !== action.id);
-    case TOGGLE_TODO:
-      return state.map((todo) => (todo.id !== action.id ? todo : { ...todo, complete: !todo.complete }));
-    default:
-      return state;
-  }
-}
+// reducer
+export const todos = createReducer(initial, {
+  [getTodo]: (state) => state,
+  [addTodo]: (state, { payload }) => [
+    ...state,
+    {
+      id: Date.now(),
+      value: payload,
+      complete: false,
+    },
+  ],
+  [removeTodo]: (state, { payload }) => state.filter((todo) => todo.id !== payload),
+  [toggleTodo]: (state, { payload }) =>
+    state.forEach((todo) => {
+      if (todo.id === payload) todo.complete = !todo.complete;
+    }),
+});

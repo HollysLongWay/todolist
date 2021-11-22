@@ -20,10 +20,17 @@ export default function TodoList() {
   }, [dispatch]);
 
   return (
-    <ul>
+    <ul aria-label="할 일 목록">
       {todos &&
         todos.map((todo) => (
-          <TodoItem key={todo.id} id={todo.id} value={todo.value} complete={todo.complete} onChange={onChange} onClick={onClick} />
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            value={todo.value}
+            complete={todo.complete}
+            onChange={onChange}
+            onClick={onClick}
+          />
         ))}
     </ul>
   );

@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
 import { todos } from './modules/reducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
 
-const reducer = combineReducers({ todos });
-const middleware = applyMiddleware(thunk);
-
-const store = createStore(reducer, composeWithDevTools(middleware));
+const store = configureStore({
+  reducer: {
+    todos,
+  },
+});
 
 ReactDOM.render(
   <Provider store={store}>
