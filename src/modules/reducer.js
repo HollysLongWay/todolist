@@ -11,17 +11,17 @@ const initial = [{ id: Date.now(), value: '리스트 추가하기', complete: fa
 // reducer
 export const todos = createReducer(initial, {
   [getTodo]: (state) => state,
-  [addTodo]: (state, action) => [
+  [addTodo]: (state, { payload }) => [
     ...state,
     {
       id: Date.now(),
-      value: action.text,
+      value: payload,
       complete: false,
     },
   ],
-  [removeTodo]: (state, action) => state.filter((todo) => todo.id !== action.id),
-  [toggleTodo]: (state, action) =>
+  [removeTodo]: (state, { payload }) => state.filter((todo) => todo.id !== payload),
+  [toggleTodo]: (state, { payload }) =>
     state.forEach((todo) => {
-      if (todo.id === action.id) todo.complete = !todo.complete;
+      if (todo.id === payload) todo.complete = !todo.complete;
     }),
 });
