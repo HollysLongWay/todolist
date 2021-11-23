@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodo, removeTodo, toggleTodo } from '../modules/reducer';
 import TodoItem from './TodoItem';
@@ -7,13 +7,19 @@ export default function TodoList() {
   const dispatch = useDispatch();
   const todos = useSelector((store) => store.todos);
 
-  const onChange = (id) => {
-    dispatch(toggleTodo(id));
-  };
+  const onChange = useCallback(
+    (id) => {
+      dispatch(toggleTodo(id));
+    },
+    [dispatch]
+  );
 
-  const onClick = (id) => {
-    dispatch(removeTodo(id));
-  };
+  const onClick = useCallback(
+    (id) => {
+      dispatch(removeTodo(id));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(getTodo());
