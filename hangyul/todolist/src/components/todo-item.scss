@@ -1,4 +1,5 @@
 .todo-item {
+  position: relative;
   padding: 10px 0;
   box-shadow: 0 0 1px 0 rgba(100, 100, 100, 0.4);
   .view {
@@ -19,7 +20,8 @@
     }
     label {
       height: 40px;
-      padding: 10px 48px;
+      margin-left: 48px;
+      padding: 10px;
       display: block;
       font-size: 20px;
       line-height: 1;
@@ -40,5 +42,18 @@
     &:hover .delete {
       display: block;
     }
+  }
+  .edit {
+    display: none;
+    width: calc(100% - 48px);
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
+    position: absolute;
+    top: 0;
+    margin-left: 48px; 
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    line-height: 40px;
   }
 }
