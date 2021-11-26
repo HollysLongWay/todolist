@@ -25,33 +25,29 @@ export default function TodoList() {
   );
 
   const showAllTodos = () => {
-    setTodos(todos);
+    seShowType('all');
   };
 
   const showActiveTodos = () => {
-    setTodos(todos.filter((todo) => !todo.complete));
+    seShowType('active');
   };
 
   const showComTodos = () => {
-    setTodos(todos.filter((todo) => todo.complete));
+    seShowType('complete');
   };
 
   useEffect(() => {
     dispatch(getTodo());
     setTodos(fetchTodos);
+  }, [dispatch, fetchTodos]);
+
+  useEffect(() => {
     if (showtype !== 'all') {
       setTodos(
-        todos.filter((todo) => {
-          if (showtype === 'com') return todo.complete;
-          return !todo.complete;
-        })
+        fetchTodos.filter((todo) => (showtype === 'complete' ? todo.complete : !todo.complete))
       );
-    }
-  }, [dispatch, todos]);
-
-  // useEffect(() => {
-  //   console.log(todos);
-  // }, [todos, dispatch]);
+    } else setTodos(fetchTodos);
+  }, [showtype]);
 
   return (
     <>
