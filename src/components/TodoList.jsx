@@ -8,6 +8,7 @@ export default function TodoList() {
   const dispatch = useDispatch();
   const fetchTodos = useSelector((store) => store.todos);
   const [todos, setTodos] = useState(fetchTodos);
+  const [showtype, seShowType] = useState('all');
 
   const onChange = useCallback(
     (id) => {
@@ -37,7 +38,20 @@ export default function TodoList() {
 
   useEffect(() => {
     dispatch(getTodo());
-  }, [dispatch]);
+    setTodos(fetchTodos);
+    if (showtype !== 'all') {
+      setTodos(
+        todos.filter((todo) => {
+          if (showtype === 'com') return todo.complete;
+          return !todo.complete;
+        })
+      );
+    }
+  }, [dispatch, todos]);
+
+  // useEffect(() => {
+  //   console.log(todos);
+  // }, [todos, dispatch]);
 
   return (
     <>
