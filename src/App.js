@@ -1,4 +1,4 @@
-import './App.scss';
+import './scss/App.scss';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 
