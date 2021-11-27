@@ -12,6 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+$btnColor: cadetblue;
+
 .todos {
   box-sizing: border-box;
   padding-top: 100px;
@@ -75,7 +77,7 @@ code {
       }
 
       button {
-        background-color: #c0392b;
+        background-color: $btnColor;
         font-weight: 700;
         color: #fff;
         border-width: 0;
@@ -99,8 +101,8 @@ code {
 
   &--btnWrap {
     button {
-      // font-weight: 700;
-      // color: #fff;
+      background-color: $btnColor;
+      color: #fff;
       border-width: 0;
       border-radius: 2px;
       margin-left: 10px;
