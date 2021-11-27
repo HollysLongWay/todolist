@@ -6,9 +6,9 @@ export default function TodoOption({ todos, showAllTodos, showActiveTodos, showC
   const showCom = useRef();
 
   return (
-    <section>
-      <span>{todos.length} item left</span>
-      <div>
+    <section className="todo--footer">
+      <span className="todo--footer--text">{todos.length} item left</span>
+      <div className="todo--footer--btnWrap">
         <button ref={showAll} onClick={showAllTodos}>
           All
         </button>
