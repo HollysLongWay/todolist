@@ -8,7 +8,7 @@ export default function TodoList() {
   const dispatch = useDispatch();
   const fetchTodos = useSelector((store) => store.todos);
   const [todos, setTodos] = useState(fetchTodos);
-  const [showtype, seShowType] = useState('all');
+  const [showType, seshowType] = useState('all');
 
   const onChange = useCallback(
     (id) => {
@@ -25,15 +25,15 @@ export default function TodoList() {
   );
 
   const showAllTodos = () => {
-    seShowType('all');
+    seshowType('all');
   };
 
   const showActiveTodos = () => {
-    seShowType('active');
+    seshowType('active');
   };
 
   const showComTodos = () => {
-    seShowType('complete');
+    seshowType('complete');
   };
 
   useEffect(() => {
@@ -42,12 +42,12 @@ export default function TodoList() {
   }, [dispatch, fetchTodos]);
 
   useEffect(() => {
-    if (showtype !== 'all') {
+    if (showType !== 'all') {
       setTodos(
-        fetchTodos.filter((todo) => (showtype === 'complete' ? todo.complete : !todo.complete))
+        fetchTodos.filter((todo) => (showType === 'complete' ? todo.complete : !todo.complete))
       );
     } else setTodos(fetchTodos);
-  }, [showtype]);
+  }, [showType]);
 
   return (
     <>
@@ -64,12 +64,14 @@ export default function TodoList() {
             />
           ))}
       </ul>
-      <TodoOption
-        todos={todos}
-        showAllTodos={showAllTodos}
-        showActiveTodos={showActiveTodos}
-        showComTodos={showComTodos}
-      />
+      {fetchTodos.length > 0 && (
+        <TodoOption
+          todos={todos}
+          showAllTodos={showAllTodos}
+          showActiveTodos={showActiveTodos}
+          showComTodos={showComTodos}
+        />
+      )}
     </>
   );
 }
